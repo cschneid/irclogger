@@ -1,0 +1,4 @@
+*.log
+*.pid
+*.swo
+*.swp

@@ -1,0 +1,29 @@
+
+<dl class="table-display">
+
+<% last_time = 0 %>
+<% last_nick = "" %>
+
+<% @messages.each do |message| %>
+  <% if (last_time + 5.minutes < message.timestamp) then %>
+    <% last_time = message.timestamp %>
+    <div class="time">
+      <%= Time.at(message.timestamp).strftime("%b %d %H:%M") %>
+    </div>
+    <% last_nick = "" %>
+  <% end %>
+
+  <dt class="<%= message.message_type %>">
+    <% unless (message.nick.blank? || message.nick == last_nick) then %>
+      <span class="nick"><%= message.nick %></span>
+      <br />
+    <% end %>
+  </dt>
+  <dd class="<%= message.message_type %>">
+    <%= h message.line %>
+  </dd>
+
+  <% last_nick = message.nick %>
+<% end %>
+
+</dl>
