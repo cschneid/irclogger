@@ -2,3 +2,5 @@
 *.pid
 *.swo
 *.swp
+config.yml
+config.ru
