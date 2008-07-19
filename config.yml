@@ -2,8 +2,8 @@
     environment: production
     chdir: /srv/ruby/irclogger
     address: 127.0.0.1
-    user: root
-    group: root
+    user: ruby
+    group: ruby
     port: 10000
     pid: /srv/ruby/irclogger/thin.pid
     rackup: /srv/ruby/irclogger/config.ru
