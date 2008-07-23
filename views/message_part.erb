@@ -1,0 +1,8 @@
+<dt class="<%= message.message_type %>">
+  <% unless (message.nick.blank? || message.nick == last_nick) then %>
+    <span class="nick"><%= message.nick %></span>
+  <% end %>
+</dt>
+<dd class="<%= message.message_type %>">
+  <%= h message.line %>
+</dd>

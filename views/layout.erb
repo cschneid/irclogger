@@ -1,7 +1,7 @@
 <html>
 	<head>
-		<title>Sinatra IRC Logs</title>
-		<link rel="stylesheet" href="styles.css" />
+		<title>IRC Logs <%= "For #{@channel} on #{@date.to_s}" if @channel %></title>
+		<link rel="stylesheet" href="/styles.css" />
 	</head>
 	<body>
 	<%= yield %>
