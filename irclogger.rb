@@ -28,6 +28,7 @@ helpers do
 
   def partial(template, *args)
     options = args.extract_options!
+    options.merge!(:layout => false)
     if collection = options.delete(:collection) then
       collection.inject([]) do |buffer, member|
         buffer << erb(template, options.merge(:layout =>
