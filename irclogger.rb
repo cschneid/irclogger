@@ -38,6 +38,14 @@ helpers do
       erb(template, options)
     end
   end
+
+  def relative_day(day) 
+    case day
+    when "today": Date.today.strftime("%Y-%m-%d")
+    when "yesterday": (Date.today - 1).strftime("%Y-%m-%d")
+    else Date.today
+    end
+  end
 end
 
 ## Web ##########################
@@ -54,15 +62,10 @@ get '/:channel/:date' do
   @channel = params[:channel]
   @date = params[:date]
 
-  case @date
-  when 'today':     @base = Date.today
-  when 'yesterday': @base = Date.new(Date.today.year, Date.today.month, Date.today.day - 1)
-  else
-    begin
-      @base = Date.parse(@date)
-    rescue
-      redirect "/#{@channel}/today"
-    end
+  begin
+    @base = Date.parse(@date)
+  rescue
+    redirect "/#{@channel}/#{relative_day(@date)}"
   end
 
   @begin = Time.local(@base.year, @base.month, @base.day)
