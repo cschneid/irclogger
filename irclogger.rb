@@ -54,8 +54,7 @@ get '/' do
 end
 
 get '/:channel/' do
-  @channel = params[:channel]
-  redirect "/#{@channel}/today"
+  redirect "/#{@channel}/#{relative_day('today')}"
 end
 
 get '/:channel/:date' do
