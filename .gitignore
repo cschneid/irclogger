@@ -4,3 +4,4 @@
 *.swp
 config.yml
 config.ru
+public/system/cache
