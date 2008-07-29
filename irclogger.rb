@@ -1,5 +1,7 @@
-$:.unshift File.join(File.dirname(__FILE__), '/vendor/sinatra/lib/')
+Dir[File.dirname(__FILE__) + '/vendor/*/lib'].each { |d| $:.unshift d }
+
 require 'sinatra'
+require 'cache'
 require 'date'
 
 ## DB ###########################
