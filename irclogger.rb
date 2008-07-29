@@ -25,6 +25,7 @@ end
 
 
 helpers do
+  include Sinatra::Cache
   include Rack::Utils
   alias_method :h, :escape_html
 
@@ -52,7 +53,7 @@ end
 
 ## Web ##########################
 get '/' do
-  erb :index
+  cache(erb :index)
 end
 
 get '/:channel/' do
@@ -78,7 +79,13 @@ get '/:channel/:date' do
 
   @day_before = (@base - 1)
   @day_after = (@base + 1)
-  erb :log
+
+  # Cache this if it isn't today.  Since old pages will never update...
+  if @base == Date.today
+    erb :log
+  else
+    cache(erb :log)
+  end
 end
 
 ## Monkey Patching #############
