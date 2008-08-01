@@ -57,6 +57,7 @@ get '/' do
 end
 
 get '/:channel/' do
+  @channel = params[:channel]
   redirect "/#{@channel}/#{relative_day('today')}"
 end
 
@@ -70,15 +71,16 @@ get '/:channel/:date' do
     redirect "/#{@channel}/#{relative_day(@date)}"
   end
 
+  @day_before = (@base - 1)
+  @day_after = (@base + 1)
+
   @begin = Time.local(@base.year, @base.month, @base.day)
-  @end   = Time.local(@base.year, @base.month, @base.day + 1)
+  @end   = Time.local(@day_after.year, @day_after.month, @day_after.day)
   @messages = Message.filter(:timestamp > @begin.to_i).
                       filter(:timestamp < @end.to_i).
                       filter(:channel => "##{@channel}").
                       order(:timestamp)
 
-  @day_before = (@base - 1)
-  @day_after = (@base + 1)
 
   # Cache this if it isn't today.  Since old pages will never update...
   if @base == Date.today
