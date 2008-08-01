@@ -1,6 +1,7 @@
 <dt class="<%= message.message_type %>">
   <% unless (message.nick.blank? || message.nick == last_nick) then %>
     <span class="nick"><%= message.nick %></span>
+    <a class="permalink" href="#<%= message.timestamp %>" name="<%= message.timestamp %>">#</a> 
   <% end %>
 </dt>
 <dd class="<%= message.message_type %>">

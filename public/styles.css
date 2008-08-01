@@ -62,3 +62,11 @@ div.time {
 #header h2 {
 
 }
+
+
+.permalink,
+.permalink:active,
+.permalink:visited {
+	color: #dddddd;
+	text-decoration: none;
+}
