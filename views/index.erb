@@ -1,7 +1,7 @@
 Logged channels:
 <ul>
-<li><a href="/sinatra/today">#sinatra</a></li>
-<li><a href="/radiantcms/today">#radiantcms</a></li>
-<li><a href="/datamapper/today">#datamapper</a></li>
+<% @channels.each do |c| %>
+	<li><a href="/<%= c[1..-1] %>/today"><%= c %></a></li>
+<% end %>
 </ul>
 

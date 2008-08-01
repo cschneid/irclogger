@@ -6,7 +6,7 @@ require 'date'
 
 ## DB ###########################
 require 'sequel'
-Sequel.connect 'mysql://root@localhost/irclogs'
+DB = Sequel.connect 'mysql://root@localhost/irclogs'
 class Message < Sequel::Model(:irclog)
   def message_type
     return "msg" if msg?
@@ -53,7 +53,11 @@ end
 
 ## Web ##########################
 get '/' do
-  cache(erb :index)
+  @channels = DB["SELECT channel FROM irclog GROUP BY channel"].inject([]) { |arr, row| 
+    arr << row[:channel] if row[:channel] =~ /^#/ 
+    arr 
+  }
+  erb :index
 end
 
 get '/:channel/' do
