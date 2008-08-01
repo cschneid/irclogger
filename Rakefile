@@ -21,32 +21,13 @@ task :stop do
   exec(command)
 end
 
+desc 'Restarts the server'
+task :restart => [:stop, :start]
+
 desc 'Starts mysql with the database'
 task :mysql do
   command = "mysql -uroot irclogs"
   STDERR.puts(command) if verbose
   exec(command)
 end
-
-# Environment Configuration ==================================================
-
-def wink_environment
-  if ENV['WTE_ENV']
-    ENV['WTE_ENV'].to_sym
-  elsif defined?(Sinatra)
-    Sinatra.application.options.env
-  else
-    :development
-  end
-end
-
-task :environment do
-  $:.unshift 'sinatra/lib' if File.exist?('sinatra')
-  $:.unshift 'lib'
-  $:.unshift '.'
-  require 'whattoeat'
-end
-
-
-
 
