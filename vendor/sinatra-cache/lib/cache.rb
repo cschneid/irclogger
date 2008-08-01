@@ -25,7 +25,7 @@ module Sinatra
     # default extension for caching
     set :cache_page_extension, '.html'
     # set Cache dir to Root of Public.
-    set :cache_dir, 'system/cache/'
+    set :cache_dir, 'cache/'
     
     
     # Caches the given URI to a html file in /public
