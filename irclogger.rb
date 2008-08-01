@@ -46,7 +46,7 @@ helpers do
     case day
     when "today": Date.today.strftime("%Y-%m-%d")
     when "yesterday": (Date.today - 1).strftime("%Y-%m-%d")
-    else Date.today
+    else Date.today.strftime("%Y-%m-%d")
     end
   end
 end
@@ -84,6 +84,7 @@ get '/:channel/:date' do
   if @base == Date.today
     erb :log
   else
+    STDERR << "Rendering log #{request.path_info}\n"
     cache(erb :log)
   end
 end
