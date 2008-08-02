@@ -5,5 +5,5 @@
   <% end %>
 </dt>
 <dd class="<%= message.message_type %>">
-  <%= h message.line %>
+  <%= auto_link_urls(h message.line) %>
 </dd>

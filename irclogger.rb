@@ -1,8 +1,13 @@
+# Wire up the paths
 Dir[File.dirname(__FILE__) + '/vendor/*/lib'].each { |d| $:.unshift d }
+$:.unshift File.dirname(__FILE__) + '/lib'
+
 
 require 'sinatra'
 require 'cache'
 require 'date'
+require 'helpers'
+require 'partials'
 
 ## DB ###########################
 require 'sequel'
@@ -24,31 +29,13 @@ class Message < Sequel::Model(:irclog)
 end
 
 
+## Helpers ###########################
 helpers do
+  include IRCLogger::Helpers
+  include Sinatra::Partials
   include Sinatra::Cache
   include Rack::Utils
   alias_method :h, :escape_html
-
-  def partial(template, *args)
-    options = args.extract_options!
-    options.merge!(:layout => false)
-    if collection = options.delete(:collection) then
-      collection.inject([]) do |buffer, member|
-        buffer << erb(template, options.merge(:layout =>
-        false, :locals => {template.to_sym => member}))
-    end.join("\n")
-    else
-      erb(template, options)
-    end
-  end
-
-  def relative_day(day) 
-    case day
-    when "today": Date.today.strftime("%Y-%m-%d")
-    when "yesterday": (Date.today - 1).strftime("%Y-%m-%d")
-    else Date.today.strftime("%Y-%m-%d")
-    end
-  end
 end
 
 ## Web ##########################
