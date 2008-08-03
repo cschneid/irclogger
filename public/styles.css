@@ -5,14 +5,21 @@ body {
         font-family: georgia, times, serif;
 }
 
+#log {
+	float: left;
+}
 
-dl.table-display
+#links {
+	float: right;
+}
+
+#log dl
 {
         margin: 2em 0;
         padding: 0;
 }
 
-.table-display dt
+#log dt
 {
         float: left;
         margin: 0 0 0 0;
@@ -22,14 +29,14 @@ dl.table-display
         width: 125px;
 }
 
-.table-display dt.info,
-.table-display dd.info {
+#log dt.info,
+#log dd.info {
         font-size: 12px;
         color: #999;
 }
 
-.table-display dt.msg,
-.table-display dd.info {
+#log dt.msg,
+#log dd.info {
 }
 
 /* commented backslash hack for mac-ie5 \*/
@@ -38,13 +45,12 @@ dt {
 }
 /* end hack */
 
-.table-display dd
+#log dd
 {
         float: left;
         width: 500px;
         margin: 0 0 0 0;
         padding: .5em;
-        //border-top: 1px solid #999;
 }
 
 div.time {
@@ -55,18 +61,12 @@ div.time {
         background-color: #fafafa;
 }
 
-#header h1 {
-        
-}
-
-#header h2 {
-
-}
 
 
+/* Hash marks for permalinking to a certain point in the log */
 .permalink,
 .permalink:active,
 .permalink:visited {
-	color: #dddddd;
+	color: #d0d0d0;
 	text-decoration: none;
 }

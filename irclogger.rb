@@ -47,17 +47,11 @@ get '/' do
   erb :index
 end
 
-
-## TODO: Make this DRY!!
-get '/:channel' do
-  @channel = params[:channel]
-  redirect "/#{@channel}/#{relative_day('today')}"
-end
-
-## TODO: Make this DRY!!
-get '/:channel/' do
-  @channel = params[:channel]
-  redirect "/#{@channel}/#{relative_day('today')}"
+['/:channel', '/:channel/'].each do |url|
+  get url do
+    @channel = params[:channel]
+    redirect "/#{@channel}/#{relative_day('today')}"
+  end
 end
 
 get '/:channel/:date' do
@@ -79,6 +73,12 @@ get '/:channel/:date' do
                       filter(:timestamp < @end.to_i).
                       filter(:channel => "##{@channel}").
                       order(:timestamp)
+
+  @urls = @messages.inject([]) do |arr, m|
+    matches = m.line.scan IRCLogger::Helpers::AUTO_LINK_RE
+    matches.each { |match| arr << (match[1] + match[2]) }
+    arr
+  end
 
 
   # Cache this if it isn't today.  Since old pages will never update...

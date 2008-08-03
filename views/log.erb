@@ -2,22 +2,24 @@
 <% last_nick = "" %>
 
 <%= partial :header_part %>
+<%= partial :links_part %>
 
 
 <a href="<%= "/#{@channel}/#{@day_before.strftime('%Y-%m-%d')}" %>"><%= @day_before.strftime('%Y-%m-%d') %></a>
 <a href="<%= "/#{@channel}/#{@day_after.strftime('%Y-%m-%d')}" %>"><%= @day_after.strftime('%Y-%m-%d') %></a>
 
-<dl class="table-display">
-  <% @messages.each do |message| %>
-    <% if (last_time + 5.minutes < message.timestamp) then %>
-      <%= partial :time_part, :locals => {:message => message} %>
-      <% last_time = message.timestamp %>
-      <% last_nick = "" %>
+<div id="log">
+  <dl class="table-display">
+    <% @messages.each do |message| %>
+      <% if (last_time + 5.minutes < message.timestamp) then %>
+        <%= partial :time_part, :locals => {:message => message} %>
+        <% last_time = message.timestamp %>
+        <% last_nick = "" %>
+      <% end %>
+      
+      <%= partial :message_part, :locals => {:message => message, :last_nick => last_nick} %>
+  
+      <% last_nick = message.nick %>
     <% end %>
-    
-    <%= partial :message_part, :locals => {:message => message, :last_nick => last_nick} %>
-
-    <% last_nick = message.nick %>
-  <% end %>
-</dl>
-
+  </dl>
+</div>
