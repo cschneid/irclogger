@@ -26,9 +26,9 @@ def handle_welcome(text, args)
   false # true stops the event chain
 end
 
+#PRIVMSG #cschneid-test ACTION ME MESSAGE 2
 # A generic message
 def handle_msg(fullactor, actor, target, text)
-  return false unless target =~ /^#/
   log(target, actor, "#{text}")
   false
 end
