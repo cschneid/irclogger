@@ -19,5 +19,12 @@ end
   :irc_network  => options['network'],
   :master       => options['master'],
   :passwords    => options['passwords']
+  :nicknames = ['irclogger-com', 'ircloggercom', 'irclogger-com_', 'ircloggercom__']
 )
+
+trap :USR_2 do 
+  # Do crap here
+end
+
+
 @bot.irc_loop

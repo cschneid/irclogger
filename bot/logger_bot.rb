@@ -25,7 +25,6 @@ class LoggerBot < IRCBot
 
     options[:username] = BOTNAME
     options[:realname] = BOTNAME
-    options[:nicknames] = ['irclogger-com', 'ircloggercom', 'irclogger-com_', 'ircloggercom__']
 
     # Set up IRCBot, our loving parent, and begin
     super(options)
