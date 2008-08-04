@@ -3,32 +3,12 @@ require 'rubygems'
 Dir[File.dirname(__FILE__) + '/vendor/*/lib'].each { |d| $:.unshift d }
 $:.unshift File.dirname(__FILE__) + '/lib'
 
-
 require 'sinatra'
 require 'cache'
 require 'date'
 require 'helpers'
 require 'partials'
-
-## DB ###########################
-require 'sequel'
-DB = Sequel.connect 'mysql://root@localhost/irclogs'
-class Message < Sequel::Model(:irclog)
-  def message_type
-    return "msg" if msg?
-    return "info" if info?
-    ""
-  end
-
-  def msg?
-    ! nick.blank?
-  end
-
-  def info?
-    ! msg?
-  end
-end
-
+require 'models'
 
 ## Helpers ###########################
 helpers do
