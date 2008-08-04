@@ -1,0 +1,29 @@
+* CTCP formatting:
+  * Color is ^C<fore>[,<back>]
+  * Bold is ^B to toggle on or off
+* CTCP commands (VERSION, PING, etc): http://www.invlogic.com/irc/ctcp.html
+* Extract all pattern matching into an external file - store both the
+  pattern and the event handle's symbol.
+* To deal with the required post-handler logic in the output API, and
+  "nicely" deal with filtering output, it may be better to have a separate
+  hash of YAIL-required post-handlers.  This would allow all logic to be
+  done as handlers (makes things more consistent)
+* Steal below snippet from perl's irc lib - seems to parse the numeric
+  handlers nicely-ish - gets "from", "type", and an array of "other" data.
+
+-------------------------------------------------------------------
+
+  my ($from, $type, $stuff) = split(/\s+/, $line, 3);
+  my ($blip, $space, $other, @stuff);
+  while ($stuff) {
+    ($blip, $space, $other) = split(/(\s+)/, $stuff, 2);
+    $space = "" unless $space;
+    $other = "" unless $other;       # Thanks to jack velte...
+    if ($blip =~ /^:/) {
+      push @stuff, $blip . $space . $other;
+      last;
+    } else {
+      push @stuff, $blip;
+      $stuff = $other;
+    }
+  }

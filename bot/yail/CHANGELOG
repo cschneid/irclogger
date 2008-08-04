@@ -1,0 +1,47 @@
+2008-07-01:
+* Fixed IRCBot to be part of the net/yail namespace so you can subclass
+  without copying the file into your own project
+* Fixed IRCBot to actually be usable (fixed require)
+
+2008-07-02:
+* Minor documentation fixes
+* Args aren't automatically duped for all handlers anymore, as that caused
+  output handling to break (args come in, go to handler, get duped, get
+  filtered, handler chain ends, required YAIL output methods finish with the
+  original, unfiltered args)
+* All output APIs now dup the args at the top level to deal with above issue
+* Added more details to Rakefile - homepage and rubyforge project
+* Bumped to version 1.0.2 - will release gem only after a little testing,
+  though
+
+2008-07-03:
+* IRCBot can now auto-join multiple channels, and has a built-in uptime
+  system.
+* Net::YAIL now has handling for INVITE messages
+* Added fully working logger bot for a solid example
+* Since changes are more extensive than a minor release, bumping to 1.1.1
+
+2008-07-07:
+* The included logger example bot no longer crashes on incoming "private"
+  message
+* Logger example also has an example of using an outgoing handler to
+  centralize a list of channel passwords - all join messages get a password
+  tacked on if the central password list has one for the given channel
+* Obviously the above addition required support for joining password-protected
+  channels, so YAY!
+
+2008-07-17:
+* Fixed logger's handler to not call the channel logging code on private message
+* Figured it's about time for a new gem, 1.2.0.  Change to join handler breaks
+  existing code in a minor way - don't forget to fix your handlers!
+
+2008-07-22:
+* Added a bunch of new output APIs and corresponding outgoing handlers
+* Auto-support for server password with new arg to constructor
+* Moved TODO stuff into a separate file outside the gem's evil influence!
+
+2008-07-??:
+* Fixed up a bunch of code to add a bit more stability for dead sockets and
+  such.
+* IRCBot can now properly reconnect when the socket does end up dying.
+* Bumped version to 1.2.1.  Probably a good time to release another gem.

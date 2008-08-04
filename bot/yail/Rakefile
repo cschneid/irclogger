@@ -1,0 +1,37 @@
+Gem::manage_gems
+require 'rake/gempackagetask'
+require 'rake/testtask'
+spec = Gem::Specification.new do |s|
+  s.platform          = Gem::Platform::RUBY
+  s.name              = "net-yail"
+  s.version           = '1.2.1'
+  s.author            = "Jeremy Echols"
+  s.email             = "yail<at>nerdbucket dot com"
+  s.summary           = "Yet Another IRC Library: wrapper for IRC communications in Ruby."
+  s.files             = FileList[
+                          'examples/logger/*', 'lib/net/*.rb', 'CHANGELOG',
+                          'lib/net/yail/*', 'test/*.rb'
+                        ].to_a
+  s.homepage          = 'http://ruby-irc-yail.nerdbucket.com/'
+  s.rubyforge_project = 'net-yail'
+  s.require_path      = "lib"
+  s.autorequire       = "net/yail"
+  s.test_files        = Dir.glob('tests/*.rb')
+  s.has_rdoc          = true
+  s.rdoc_options      = ['--main', 'README']
+  s.extra_rdoc_files  = ['README', 'CHANGELOG']
+end
+
+Rake::GemPackageTask.new(spec) do |pkg|
+  pkg.need_tar = true
+end
+
+Rake::TestTask.new do |t|
+  t.libs << "tests"
+  t.test_files = FileList['tests/tc_*.rb']
+  t.verbose = true
+end
+
+task :default => "pkg/#{spec.name}-#{spec.version}.gem" do
+  puts "generated latest version"
+end

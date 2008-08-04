@@ -1,0 +1,6 @@
+silent: false
+loud: false
+output-dir: /tmp/logs
+master: Nerdmaster
+passwords:
+  "#protected": "my_secret_password"
