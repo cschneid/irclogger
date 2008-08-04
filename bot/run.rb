@@ -33,10 +33,7 @@ for key in %w{silent loud network output-dir master}
 end
 
 @bot = LoggerBot.new(
-  :silent       => options['silent'],
-  :loud         => options['loud'],
   :irc_network  => options['network'],
-  :output_dir   => options['output-dir'],
   :master       => options['master'],
   :passwords    => options['passwords']
 )
