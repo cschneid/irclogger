@@ -28,6 +28,7 @@ end
 
 # A generic message
 def handle_msg(fullactor, actor, target, text)
+  return false if target == 'in'
   log(target, actor, "#{text}")
   false
 end
@@ -98,6 +99,7 @@ end
 
 @irc.prepend_handler :incoming_welcome , method(:handle_welcome)
 @irc.prepend_handler :incoming_msg     , method(:handle_msg)
+@irc.prepend_handler :incoming_act     , method(:handle_act)
 @irc.prepend_handler :incoming_notice  , method(:handle_notice)
 @irc.prepend_handler :incoming_mode    , method(:handle_mode)
 @irc.prepend_handler :incoming_join    , method(:handle_join)
