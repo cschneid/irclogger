@@ -16,10 +16,12 @@ for key in %w{silent loud network output-dir master}
 end
 
 @bot = LoggerBot.new(
-  :irc_network  => options['network'],
-  :master       => options['master'],
-  :passwords    => options['passwords']
-  :nicknames = ['irclogger-com', 'ircloggercom', 'irclogger-com_', 'ircloggercom__']
+  :irc_network  => "irc.freenode.org",
+  :port => 6667,
+  :passwords    => [],
+  :nicknames = ['irclogger-com', 'ircloggercom', 'irclogger-com_', 'ircloggercom__'],
+  :silent = false,
+  :loud = false
 )
 
 trap :USR_2 do 

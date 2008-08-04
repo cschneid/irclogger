@@ -17,10 +17,8 @@ class LoggerBot < IRCBot
   # Options:
   # * <tt>:irc_network</tt>: IP/name of server
   # * <tt>:port</tt>: ...
-  # * <tt>:master</tt>: User who can order quits
   # * <tt>:passwords</tt>: Hash of channel=>pass for joining channels - n/a read from DB
   def initialize(options = {})
-    @master       = options.delete(:master)
     @passwords    = options[:passwords] || {}
 
     options[:username] = BOTNAME
@@ -54,6 +52,7 @@ class LoggerBot < IRCBot
     end
   end
 
+  # Incoming action /me or channel talk
   def _in_act(fullactor, user, channel, text)
     # check if this is a /msg command, or normal channel talk
     return if (channel =~ /#{bot_name}/)
@@ -75,16 +74,6 @@ class LoggerBot < IRCBot
   end
 
   def incoming_channel_message(user, channel, text)
-    # check for special stuff before keywords
-    # Nerdmaster is allowed to do special ordering
-    if @master == user
-      if (text == "#{bot_name}: QUIT")
-        self.irc.quit("Ordered by my master")
-        sleep 1
-        exit
-      end
-    end
-
     case text
       when /^\s*#{bot_name}(:|)\s*uptime\s*$/i
         msg(channel, get_uptime_string)
@@ -115,7 +104,6 @@ class LoggerBot < IRCBot
   end
 
   # Invited to a channel for logging purposes - simply auto-join for now.
-  # Maybe allow only @master one day, or array of authorized users.
   def _in_invited(fullactor, actor, target)
     join target
   end
