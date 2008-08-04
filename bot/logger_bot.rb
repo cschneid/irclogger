@@ -1,9 +1,11 @@
 #!/usr/bin/ruby
 
 $:.unshift File.dirname(__FILE__) + '/yail/lib'
+$:.unshift File.dirname(__FILE__) + '../lib'
 
 require 'net/yail/IRCBot'
 require 'date'
+require 'models'
 
 class LoggerBot < IRCBot
   BOTNAME = 'IRCLogger.com'
@@ -15,15 +17,10 @@ class LoggerBot < IRCBot
   # Options:
   # * <tt>:irc_network</tt>: IP/name of server
   # * <tt>:port</tt>: ...
-  # * <tt>:loud</tt>: Overly-verbose logging
-  # * <tt>:silent</tt>: Very little logging
   # * <tt>:master</tt>: User who can order quits
-  # * <tt>:output_dir</tt>: Where to store log files
-  # * <tt>:passwords</tt>: Hash of channel=>pass for joining channels
+  # * <tt>:passwords</tt>: Hash of channel=>pass for joining channels - n/a read from DB
   def initialize(options = {})
     @master       = options.delete(:master)
-    @output_dir   = options.delete(:output_dir) || File.dirname(__FILE__)
-
     @passwords    = options[:passwords] || {}
 
     options[:username] = BOTNAME
