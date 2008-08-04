@@ -48,19 +48,19 @@ end
 
 # Somebody joined
 def handle_join(fullactor, actor, target)
-  log(target, actor, "#{actor} joined #{target}")
+  log(target, nil, "#{actor} joined #{target}")
   false
 end
 
 # Somebody left the channel
 def handle_part(fullactor, actor, target, text)
-  log(target, actor, "#{actor} left #{target} (#{text})")
+  log(target, nil, "#{actor} left #{target} (#{text})")
   false
 end
 
 # Somebody got kicked
 def handle_kick(fullactor, actor, target, object, text)
-  log(target, actor, "#{actor} was kicked from #{target} (#{text})")
+  log(target, nil, "#{actor} was kicked from #{target} (#{text})")
   false
 end
 
