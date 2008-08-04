@@ -1,6 +1,6 @@
 ## DB ###########################
 require 'sequel'
-DB = Sequel.connect 'mysql://root@localhost/irclogs'
+DB = Sequel.connect 'mysql://root@localhost/irclogs_dev'
 
 
 #  +-----------+-------------+------+-----+---------+----------------+

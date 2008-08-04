@@ -1,5 +1,5 @@
 $:.unshift File.dirname(__FILE__) + '/yail/lib'
-$:.unshift File.dirname(__FILE__) + '../lib'
+$:.unshift File.dirname(__FILE__) + '/../lib'
 
 require 'net/yail/IRCBot'
 require 'date'
@@ -22,7 +22,7 @@ end
 
 # This gets fired when we're done joining
 def handle_welcome(text, args)
-  handle_reload
+  hup
   false # true stops the event chain
 end
 
@@ -80,33 +80,33 @@ end
 
 
 def hup
-  channels = Channels.get_channels
-  channels.each {|c| irc.join c }
+  channels = Channel.get_channels
+  channels.each {|c| @irc.join c }
 end
 
-irc = Net::YAIL.new(
+@irc = Net::YAIL.new(
   :address    => 'irc.freenode.org',
   :username   => 'irclogger.com',
   :realname   => 'irclogger.com',
   :nicknames  => ['irclogger-com', 'ircloggercom', 'irclogger-com_', 'ircloggercom__']
 )
 
-irc.prepend_handler :incoming_welcome , method(:handle_welcome)
-irc.prepend_handler :incoming_msg     , method(:handle_msg)
-irc.prepend_handler :incoming_notice  , method(:handle_notice)
-irc.prepend_handler :incoming_mode    , method(:handle_mode)
-irc.prepend_handler :incoming_join    , method(:handle_join)
-irc.prepend_handler :incoming_part    , method(:handle_part)
-irc.prepend_handler :incoming_kick    , method(:handle_kick)
-irc.prepend_handler :incoming_quit    , method(:handle_quit)
-irc.prepend_handler :incoming_nick    , method(:handle_nick)
+@irc.prepend_handler :incoming_welcome , method(:handle_welcome)
+@irc.prepend_handler :incoming_msg     , method(:handle_msg)
+@irc.prepend_handler :incoming_notice  , method(:handle_notice)
+@irc.prepend_handler :incoming_mode    , method(:handle_mode)
+@irc.prepend_handler :incoming_join    , method(:handle_join)
+@irc.prepend_handler :incoming_part    , method(:handle_part)
+@irc.prepend_handler :incoming_kick    , method(:handle_kick)
+@irc.prepend_handler :incoming_quit    , method(:handle_quit)
+@irc.prepend_handler :incoming_nick    , method(:handle_nick)
 
-trap :HUP lambda do |args*|
+trap :HUP do 
   hup
 end
 
-irc.start_listening
-while irc.dead_socket == false
+@irc.start_listening
+while @irc.dead_socket == false
   # Avoid major CPU overuse by taking a very short nap
   sleep 0.05
 end
