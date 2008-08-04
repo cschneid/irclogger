@@ -13,8 +13,8 @@ end
 # These methods are the actul event handlers.  They just build the text string, and hand off to log()
 #
 # Docs copied from yail:
-#   * actor: Nickname of originator of an action
-#   * target: Nickname for private actions, channel name for public
+#   * actor: Nickname of the user
+#   * target: The channel name (or nick if it's a direct message... this bot doesn't deal with those)
 #   * text: Actual message/emote/notice/etc
 #   * args: For numeric handlers, this is a hash of :fullactor, :actor, and
 #     :target.  Most numeric handlers I've built don't need this, so I made it easier to just get what you specifically want.
@@ -26,10 +26,15 @@ def handle_welcome(text, args)
   false # true stops the event chain
 end
 
-#PRIVMSG #cschneid-test ACTION ME MESSAGE 2
 # A generic message
 def handle_msg(fullactor, actor, target, text)
   log(target, actor, "#{text}")
+  false
+end
+
+# CTCP "action" (emote) from actor to target
+def handle_act(fullactor, actor, target, text)
+  log("#{target}", "* #{actor}", "#{text}")
   false
 end
 
