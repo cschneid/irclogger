@@ -1,72 +1,83 @@
-body {
-        font-weight: normal;
-        font-size: 14px;
-        background-color: white;
-        font-family: georgia, times, serif;
+/*
+ * #443A38 - Dark
+ * #936158 - Dusty Pink
+ * #DC9767 - Orange
+ * #EDCB91 - Yellow
+ * #F4EBC3 - Light Yellow
+ */
+
+* {
+  margin: 0;
+  padding: 0;
 }
 
-#log {
-	float: left;
+body {
+  font-weight: normal;
+  font-size: 14px;
+  background-color: #d0d0d0;
+  font-family: georgia, times, serif;
+}
+
+#header {
+  margin-top: 20px;
+  color: #547980;
+  padding-left: 20px;
+}
+#dates {
+  padding-left: 20px;
 }
 
 #links {
-	float: right;
+}
+#links a {
+  font-size: 14px;
 }
 
-#log dl
-{
-        margin: 2em 0;
-        padding: 0;
+#log {
+  float: left;
+  padding-left: 20px;
 }
 
-#log dt
-{
-        float: left;
-        margin: 0 0 0 0;
-        padding: .5em;
-        //border-top: 1px solid #999;
-        font-weight: bold;
-        width: 125px;
+#links {
+  float: right;
+  margin-top: 50px;
+  padding-right: 30px;
+}
+#links ul {
+  list-style: none;
 }
 
-#log dt.info,
-#log dd.info {
-        font-size: 12px;
-        color: #999;
+#log ol {
+  list-style: none;
 }
 
-#log dt.msg,
-#log dd.info {
+div.nick {
+  width: 120px;
+  float: left;
+  font-weight: bold;
+  clear:both;
 }
 
-/* commented backslash hack for mac-ie5 \*/
-dt { 
-        clear: both; 
-}
-/* end hack */
-
-#log dd
-{
-        float: left;
-        width: 500px;
-        margin: 0 0 0 0;
-        padding: .5em;
+div.line {
+  width: 600px;
+  left: 100px;
+  float: right;
+  margin-bottom: 10px;
 }
 
 div.time {
-        font-size: larger;
-        padding: 5px;
-        clear: both;
-        left: 100px;
-        background-color: #fafafa;
+  font-size: larger;
+  padding: 10px 0;
+  clear: both;
+  left: 100px;
+  color: #547980;
 }
-
 
 
 /* Hash marks for permalinking to a certain point in the log */
 .permalink,
 .permalink:active,
 .permalink:visited {
-	color: #d0d0d0;
-	text-decoration: none;
+  color: #594F4F;
+  text-decoration: none;
 }

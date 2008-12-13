@@ -1,25 +1,52 @@
 <% last_time = 0 %>
 <% last_nick = "" %>
 
-<%= partial :header_part %>
-<%= partial :links_part %>
+<div id="header">
+  <h1>irclogger</h1>
+  <h2>you're reading what happened on #<%= @channel %> at irc.freenode.net on <%= @date.to_s %></h2>
+</div>
 
+<div id="links">
+  <ul>
+    <% @urls.each do |url| %>
+      <li><a href="<%= url %>"><%= url %></a></li>
+    <% end %>
+  </ul>
+</div>
 
-<a href="<%= "/#{@channel}/#{@day_before.strftime('%Y-%m-%d')}" %>"><%= @day_before.strftime('%Y-%m-%d') %></a>
-<a href="<%= "/#{@channel}/#{@day_after.strftime('%Y-%m-%d')}" %>"><%= @day_after.strftime('%Y-%m-%d') %></a>
+<div id="dates">
+  <a href="<%= "/#{@channel}/#{@day_before.strftime('%Y-%m-%d')}" %>">&lt;&lt;<%= @day_before.strftime('%Y-%m-%d') %></a>
+  <a href="<%= "/#{@channel}/#{@day_after.strftime('%Y-%m-%d')}" %>"><%= @day_after.strftime('%Y-%m-%d') %>&gt;&gt;</a>
+</div>
 
 <div id="log">
-  <dl class="table-display">
+  <ol>
     <% @messages.each do |message| %>
+      <!-- Write out the message line -->
       <% if (last_time + 5.minutes < message.timestamp) then %>
-        <%= partial :time_part, :locals => {:message => message} %>
+        <div class="time">
+          <%= Time.at(message.timestamp).strftime("%b %d %H:%M") %>
+        </div>
         <% last_time = message.timestamp %>
         <% last_nick = "" %>
       <% end %>
       
-      <%= partial :message_part, :locals => {:message => message, :last_nick => last_nick} %>
+      <!-- Write out the message line -->
+      <div class="message">
+        <% unless (message.nick.blank? || message.nick == last_nick) then %>
+          <div class="real nick <%= message.message_type %>">
+            <span class="nick"><%= message.nick %></span>
+            <a class="permalink" href="#<%= message.timestamp %>" name="<%= message.timestamp %>">#</a> 
+          </div>
+        <% else %>
+          <div class="nick"></div>
+        <% end %>
+        <div class="line <%= message.message_type %>">
+          <%= auto_link_urls(h message.line) %>
+        </div>
+      </div>
   
       <% last_nick = message.nick %>
     <% end %>
-  </dl>
+  </ol>
 </div>

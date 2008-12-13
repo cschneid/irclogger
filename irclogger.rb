@@ -1,3 +1,4 @@
+require 'rubygems'
 # Wire up the paths
 Dir[File.dirname(__FILE__) + '/vendor/*/lib'].each { |d| $:.unshift d }
 $:.unshift File.dirname(__FILE__) + '/lib'
@@ -41,9 +42,10 @@ end
 ## Web ##########################
 get '/' do
   @channels = DB["SELECT channel FROM irclog GROUP BY channel"].inject([]) { |arr, row| 
-    arr << row[:channel] if row[:channel] =~ /^#/ 
+    arr << row[:channel] if (row[:channel] =~ /^#/ && row[:channel] != "#datamapper http://datamapper.")
     arr 
   }
+
   erb :index
 end
 
