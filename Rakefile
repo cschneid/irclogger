@@ -9,14 +9,14 @@ end
 
 desc 'Start a development server'
 task :start do
-  command = "thin -s 2 -C config.yml -R config.ru start"
+  command = "thin -s 1 -C config.yml -R config.ru start"
   STDERR.puts(command) if verbose
   exec(command)
 end
 
 desc 'Stop a development server'
 task :stop do
-  command = "thin -s 2 -C config.yml -R config.ru stop"
+  command = "thin -s 1 -C config.yml -R config.ru stop"
   STDERR.puts(command) if verbose
   exec(command)
 end
