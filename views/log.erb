@@ -34,14 +34,14 @@
       <!-- Write out the message line -->
       <div class="message">
         <% unless (message.nick.blank? || message.nick == last_nick) then %>
-          <div class="real nick <%= message.message_type %>">
+          <div class="real nick <%= (message.nick[0..0] == "*") ? "me" : "" %> <%= message.message_type %>">
             <span class="nick"><%= message.nick %></span>
             <a class="permalink" href="#<%= message.timestamp %>" name="<%= message.timestamp %>">#</a> 
           </div>
         <% else %>
           <div class="nick"></div>
         <% end %>
-        <div class="line <%= message.message_type %>">
+        <div class="line <%= (message.nick[0..0] == "*") ? "me" : "" %> <%= message.message_type %>">
           <%= auto_link_urls(h message.line) %>
         </div>
       </div>

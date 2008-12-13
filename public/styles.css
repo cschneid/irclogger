@@ -51,6 +51,10 @@ body {
   list-style: none;
 }
 
+div.me {
+  font-style: italic;
+}
+
 div.nick {
   width: 120px;
   float: left;
