@@ -6,17 +6,18 @@
   <h2>you're reading what happened on #<%= @channel %> at irc.freenode.net on <%= @date.to_s %></h2>
 </div>
 
+<div id="dates">
+  <a href="<%= "/#{@channel}/#{@day_before.strftime('%Y-%m-%d')}" %>">&lt;&lt;<%= @day_before.strftime('%Y-%m-%d') %></a>
+  <a href="<%= "/#{@channel}/#{@day_after.strftime('%Y-%m-%d')}" %>"><%= @day_after.strftime('%Y-%m-%d') %>&gt;&gt;</a>
+</div>
+
+
 <div id="links">
   <ul>
     <% @urls.each do |url| %>
       <li><a href="<%= url %>"><%= url %></a></li>
     <% end %>
   </ul>
-</div>
-
-<div id="dates">
-  <a href="<%= "/#{@channel}/#{@day_before.strftime('%Y-%m-%d')}" %>">&lt;&lt;<%= @day_before.strftime('%Y-%m-%d') %></a>
-  <a href="<%= "/#{@channel}/#{@day_after.strftime('%Y-%m-%d')}" %>"><%= @day_after.strftime('%Y-%m-%d') %>&gt;&gt;</a>
 </div>
 
 <div id="log">

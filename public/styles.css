@@ -28,6 +28,7 @@ body {
 }
 
 #links {
+  width: 35%;
 }
 #links a {
   font-size: 14px;
@@ -36,6 +37,7 @@ body {
 #log {
   float: left;
   padding-left: 20px;
+  width: 55%;
 }
 
 #links {
