@@ -5,7 +5,6 @@ $:.unshift File.dirname(__FILE__) + '/lib'
 
 
 require 'sinatra'
-require 'cache'
 require 'date'
 require 'helpers'
 require 'partials'
@@ -34,7 +33,6 @@ end
 helpers do
   include IRCLogger::Helpers
   include Sinatra::Partials
-  include Sinatra::Cache
   include Rack::Utils
   alias_method :h, :escape_html
 end
@@ -83,13 +81,7 @@ get '/:channel/:date' do
   end
 
 
-  # Cache this if it isn't today.  Since old pages will never update...
-  if @base == Date.today
-    erb :log
-  else
-    STDERR << "Rendering log #{request.path_info}\n"
-    cache(erb :log)
-  end
+  erb :log
 end
 
 ## Monkey Patching #############
