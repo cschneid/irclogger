@@ -1,14 +1,20 @@
+document.write = function(content) {
+	$("#dialog").html(content);
+}
+
 
 $(document).ready(function() {
   $("#links a[href*=gist.github.com]").click(function() {
-    $("body").append("<div id='dialog'></div>");
     var url = $(this).attr("href");
-    // Launch lightbox
-    $("#dialog").html("<script src='" + url + ".js'></script>");
+
+    $("body").append("<div id='dialog'></div>");
+
     $("#dialog").dialog({
     	title: url,
-	close: function(ev, ui) { $(this).remove(); } 
+        close: function(ev, ui) { $(this).remove(); } ,
+	open: function(ev, ui) { $(this).html("<script src='" + url + ".js'></script>"); }
     });
+
     return false;
   });
 })
