@@ -48,7 +48,7 @@
         <% else %>
           <div class="nick"></div>
         <% end %>
-        <div class="line <%= (message.nick[0..0] == "*") ? "me" : "" %> <%= message.message_type %>">
+        <div class="logline <%= (message.nick[0..0] == "*") ? "me" : "" %> <%= message.message_type %>">
           <%= auto_link_urls(h message.line) %>
         </div>
       </div>
