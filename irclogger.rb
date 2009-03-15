@@ -47,11 +47,13 @@ get '/' do
   erb :index
 end
 
-['/:channel', '/:channel/'].each do |url|
-  get url do
-    @channel = params[:channel]
-    redirect "/#{@channel}/#{relative_day('today')}"
-  end
+get '/:channel' do 
+  redirect "/#{param[:channel]}/"
+end
+
+get '/:channel/' do
+  @channel = params[:channel]
+  redirect "/#{@channel}/#{relative_day('today')}"
 end
 
 get '/:channel/:date' do
