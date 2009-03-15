@@ -1,5 +1,5 @@
 document.write = function(content) {
-	$("#dialog").html(content);
+	$("#dialog").append(content);
 }
 
 
@@ -11,6 +11,7 @@ $(document).ready(function() {
 
     $("#dialog").dialog({
     	title: url,
+	width: 800,
         close: function(ev, ui) { $(this).remove(); } ,
 	open: function(ev, ui) { $(this).html("<script src='" + url + ".js'></script>"); }
     });
