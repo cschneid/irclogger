@@ -1,19 +1,25 @@
-document.write = function(content) {
-	$("#dialog").append(content);
-}
 
+var doc_write = "";
 
 $(document).ready(function() {
-  $("#links a[href*=gist.github.com]").click(function() {
+
+  document.write = function(content) {
+    doc_write += content;
+  }
+
+  $("#links a[href*=gist.github.com], #links a[href*=pastie.org]").click(function() {
     var url = $(this).attr("href");
 
     $("body").append("<div id='dialog'></div>");
 
     $("#dialog").dialog({
     	title: url,
-	width: 800,
+	width: 900,
         close: function(ev, ui) { $(this).remove(); } ,
-	open: function(ev, ui) { $(this).html("<script src='" + url + ".js'></script>"); }
+	open: function(ev, ui) { d = $(this);
+			         d.html("<script src='" + url + ".js'></script>"); 
+				 window.setTimeout(function(){d.html(doc_write);}, 1000);
+			       }
     });
 
     return false;
