@@ -3,6 +3,23 @@ require 'rubygems'
 Dir[File.dirname(__FILE__) + '/vendor/*/lib'].each { |d| $:.unshift d }
 $:.unshift File.dirname(__FILE__) + '/lib'
 
+## Rack 0.9.1 fix ##############
+require 'rack/file'
+class Rack::File
+  MIME_TYPES = Hash.new { |hash, key|
+  Rack::Mime::MIME_TYPES[".#{key}"] }
+end
+
+## Ruby 1.9.1 fixes
+if RUBY_VERSION > '1.9'
+  ## String#each needs to be aliased
+  class String
+    alias_method :each, :each_line
+  end
+
+  ## Ruby 1.9.1 also works best with thin
+  require 'thin'
+end
 
 require 'sinatra'
 require 'date'
@@ -39,16 +56,16 @@ end
 
 ## Web ##########################
 get '/' do
-  @channels = DB["SELECT channel FROM irclog GROUP BY channel"].inject([]) { |arr, row| 
+  @channels = DB["SELECT channel FROM irclog GROUP BY channel"].inject([]) { |arr, row|
     arr << row[:channel] if (row[:channel] =~ /^#/ && row[:channel] != "#datamapper http://datamapper.")
-    arr 
+    arr
   }
 
   erb :index
 end
 
-get '/:channel' do 
-  redirect "/#{param[:channel]}/"
+get '/:channel' do
+  redirect "/#{params[:channel]}/"
 end
 
 get '/:channel/' do
@@ -87,7 +104,7 @@ get '/:channel/:date' do
 end
 
 ## Monkey Patching #############
-class Fixnum 
+class Fixnum
   def minutes
     self * 60
   end

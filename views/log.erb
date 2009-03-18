@@ -24,6 +24,7 @@
       <li><a href="<%= url %>"><%= url %></a></li>
     <% end %>
   </ul>
+  <div id="searchControl">Loading...</div>
 </div>
 
 <div id="log">
@@ -37,13 +38,13 @@
         <% last_time = message.timestamp %>
         <% last_nick = "" %>
       <% end %>
-      
+
       <!-- Write out the message line -->
       <div class="message">
         <% unless (message.nick.blank? || message.nick == last_nick) then %>
           <div class="real nick <%= (message.nick[0..0] == "*") ? "me" : "" %> <%= message.message_type %>">
             <span class="nick"><%= message.nick %></span>
-            <a class="permalink" href="#<%= message.timestamp %>" name="<%= message.timestamp %>">#</a> 
+            <a class="permalink" href="#<%= message.timestamp %>" name="<%= message.timestamp %>">#</a>
           </div>
         <% else %>
           <div class="nick"></div>
@@ -52,7 +53,7 @@
           <%= auto_link_urls(h message.line) %>
         </div>
       </div>
-  
+
       <% last_nick = message.nick %>
     <% end %>
   </ol>

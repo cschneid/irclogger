@@ -3,10 +3,43 @@
 		<title>IRC Logs <%= "For #{@channel} on #{@date.to_s}" if @channel %></title>
 		<link rel="stylesheet" href="/styles.css" />
 		<link rel="stylesheet" href="/jquery-ui-1.7.custom.css" />
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
-        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.0/jquery-ui.min.js"></script>
-        <script src="/actions.js"></script>
+		<link rel="stylesheet" href="http://www.google.com/uds/css/gsearch_darkgrey.css" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.0/jquery-ui.min.js"></script>
+    <script src="/actions.js"></script>
+    <script src="http://www.google.com/jsapi?key=ABQIAAAAxIPe_Hqn9UpeceoqlzxTEhQXPjdTLTrPJWH-F2sc2QUCP_uGzBTD6d_hb1OQjUAGLiLr--aKo38HvA" type="text/javascript"></script>
+    <script type="text/javascript">
+    //<![CDATA[
+
+    google.load('search', '1');
+    function OnLoad() {
+      var searchControl = new google.search.SearchControl();
+      <% if @channel %>
+        var channelSearch = new google.search.WebSearch();
+        channelSearch.setUserDefinedLabel("<%= @channel %>");
+        channelSearch.setSiteRestriction("http://irclogger.com/<%= @channel %>");
+        channelSearch.setUserDefinedClassSuffix("siteSearch");
+        searchControl.addSearcher(channelSearch);
+      <% end %>
+
+      //var localSearch = new google.search.LocalSearch();
+      //searchControl.addSearcher(localSearch);
+
+      var siteSearch = new google.search.WebSearch();
+      siteSearch.setUserDefinedLabel("irclogger");
+      siteSearch.setSiteRestriction("irclogger.com");
+      siteSearch.setUserDefinedClassSuffix("siteSearch");
+      searchControl.addSearcher(siteSearch);
+
+      searchControl.draw(document.getElementById("searchControl"));
+      searchControl.execute("Cucumber");
+    }
+
+    google.setOnLoadCallback(OnLoad, true);
+
+    //]]>
+    </script>
 	</head>
 	<body>
 

@@ -87,3 +87,24 @@ div.time {
   color: #594F4F;
   text-decoration: none;
 }
+
+/* Google Custom Search */
+#searchControl {
+  margin-top: 15px;
+  background-color: #ddd;
+  color: black;
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+}
+
+/* Highlight -siteSearch in results area */
+
+/* bold the section header */
+.gsc-resultsRoot-siteSearch .gsc-title {
+  font-weight : bold;
+}
+
+.gsc-resultsRoot-siteSearch .gsc-keeper {
+  background-image : url('http://www.google.com/uds/css/darkgrey_check.gif');
+  font-weight : bold;
+}
