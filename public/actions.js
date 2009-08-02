@@ -16,7 +16,8 @@ $(document).ready(function() {
     	title: url,
 	width: 900,
         close: function(ev, ui) { $(this).remove(); } ,
-	open: function(ev, ui) { d = $(this);
+	open: function(ev, ui) { doc_write = "";
+			         d = $(this);
 			         d.html("<script src='" + url + ".js'></script>"); 
 				 window.setTimeout(function(){d.html(doc_write);}, 1000);
 			       }
