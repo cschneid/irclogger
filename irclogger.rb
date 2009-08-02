@@ -4,11 +4,11 @@ Dir[File.dirname(__FILE__) + '/vendor/*/lib'].each { |d| $:.unshift d }
 $:.unshift File.dirname(__FILE__) + '/lib'
 
 ## Rack 0.9.1 fix ##############
-require 'rack/file'
-class Rack::File
-  MIME_TYPES = Hash.new { |hash, key|
-  Rack::Mime::MIME_TYPES[".#{key}"] }
-end
+#require 'rack/file'
+#class Rack::File
+#  MIME_TYPES = Hash.new { |hash, key|
+#  Rack::Mime::MIME_TYPES[".#{key}"] }
+#end
 
 ## Ruby 1.9.1 fixes
 if RUBY_VERSION > '1.9'
