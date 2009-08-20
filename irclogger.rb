@@ -25,6 +25,7 @@ require 'sinatra'
 require 'date'
 require 'helpers'
 require 'partials'
+require 'json'
 
 ## DB ###########################
 require 'sequel'
@@ -101,6 +102,27 @@ get '/:channel/:date' do
 
 
   erb :log
+end
+
+get '/:channel/slice/:from/:to' do
+  @channel = params[:channel]
+  @messages = Message.filter(:timestamp > params[:from]).
+                      filter(:timestamp < params[:to]).
+                      filter(:channel => "##{@channel}").
+                      order(:timestamp).collect do |m|
+		        {
+			  :id        => m.id ,
+			  :channel   => m.channel ,
+			  :day       => m.day ,
+			  :nick      => m.nick ,
+			  :timestamp => m.timestamp ,
+			  :line      => m.line ,
+			  :spam      => m.spam ,
+			  :permalink => "http://irclogger.com/#{@channel}/#{Time.at(m.timestamp).strftime("%Y-%m-%d")}#msg_#{m.timestamp}"
+			}
+		      end
+
+  @messages.to_json	
 end
 
 ## Monkey Patching #############
