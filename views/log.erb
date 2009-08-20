@@ -30,7 +30,6 @@
 <div id="log">
   <ol>
     <% @messages.each do |message| %>
-      <!-- Write out the message line -->
       <% if (last_time + 5.minutes < message.timestamp) then %>
         <div class="time">
           <%= Time.at(message.timestamp).strftime("%b %d %H:%M") %>
@@ -39,7 +38,6 @@
         <% last_nick = "" %>
       <% end %>
 
-      <!-- Write out the message line -->
       <div class="message">
         <% unless (message.nick.blank? || message.nick == last_nick) then %>
           <div class="real nick <%= (message.nick[0..0] == "*") ? "me" : "" %> <%= message.message_type %>">
@@ -49,7 +47,7 @@
         <% else %>
           <div class="nick"></div>
         <% end %>
-        <div class="logline <%= (message.nick[0..0] == "*") ? "me" : "" %> <%= message.message_type %>">
+        <div id="msg_<%= message.timestamp %>" class="logline <%= (message.nick[0..0] == "*") ? "me" : "" %> <%= message.message_type %>">
           <%= auto_link_urls(h message.line) %>
         </div>
       </div>
