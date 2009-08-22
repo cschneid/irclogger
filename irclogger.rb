@@ -125,6 +125,15 @@ get '/:channel/slice/:from/:to' do
   @messages.to_json	
 end
 
+get '/channels.json' do
+  @channels = DB["SELECT channel FROM irclog GROUP BY channel"].inject([]) { |arr, row|
+    arr << row[:channel] if (row[:channel] =~ /^#/ && row[:channel] != "#datamapper http://datamapper.")
+    arr
+  }
+
+  @channels.to_json
+end
+
 ## Monkey Patching #############
 class Fixnum
   def minutes
