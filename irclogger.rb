@@ -129,7 +129,12 @@ get '/channels.json' do
   @channels = DB["SELECT channel FROM irclog GROUP BY channel"].inject([]) { |arr, row|
     arr << row[:channel] if (row[:channel] =~ /^#/ && row[:channel] != "#datamapper http://datamapper.")
     arr
-  }
+  }.collect do |channel|
+    {
+      :channel => channel,
+      :permalink => "http://irclogger.com/#{channel[1..-1]}"
+    }
+  end
 
   @channels.to_json
 end
