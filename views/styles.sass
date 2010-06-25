@@ -14,6 +14,9 @@ section, header, pre
   display: block
   margin: 0
 
+pre
+  font-family: "Menlo", "Monaco", monospace
+
 a
   color: #fff
 
@@ -52,13 +55,14 @@ a
 #log
   padding: 10px
   margin: #{!header_height} 0 0 #{!channels_width + 1px}
-  color: #777
+  color: #444
 
-  .msg
-    color: #fff
+  div
+    &.highlight
+      color: #fff
 
-  span.nickname
-    color: #FB1263
+      span.nickname
+        color: #FB1263
 
   a[name]
     color: #444
@@ -69,6 +73,13 @@ a
 
   a
     color: #f6f840
+
+body:not(.highlight)
+  .msg
+    color: #fff
+
+  span.nickname
+    color: #FB1263
 
 header
   background-color: #000

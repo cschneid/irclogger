@@ -58,14 +58,6 @@ helpers do
 
     %Q{<a href="/#{channel}/#{prev_date}">&lt;</a>#{date.strftime("%B %Y").center(18)}<a href="/#{channel}/#{next_date}">&gt;</a>\n#{cal.split("\n")[1..-1].join("\n")}}
   end
-
-  def log_entry(message, &block)
-    if message.msg?
-      haml_tag(:span, :class => "msg", &block)
-    else
-      yield
-    end
-  end
 end
 
 ## Web ##########################

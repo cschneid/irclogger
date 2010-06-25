@@ -1,6 +1,6 @@
 %section#log
   - @messages.each do |message|
-    - log_entry(message) do
+    %div(class="#{message.message_type}")
       %a(href="##{message.timestamp}" name="#{message.timestamp}")= Time.at(message.timestamp).strftime("%H:%M")
 
       - if message.msg?
