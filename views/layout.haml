@@ -1,0 +1,36 @@
+!!! 5
+
+%html
+  %title
+    - if @channel
+      = "##{@channel} on #{@date} // "
+
+    irclogger – Freenode IRC logs
+
+  %meta(charset="utf-8")
+  %link(rel="stylesheet" href="/styles.css")
+  %link(rel="stylesheet" href="/jquery-ui.1.7.custom")
+
+  %script(src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js")
+  %script(src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.0/jquery-ui.min.js")
+  %script(src="/actions.js")
+  %script(src="http://www.google.com/jsapi?key=ABQIAAAAxIPe_Hqn9UpeceoqlzxTEhQXPjdTLTrPJWH-F2sc2QUCP_uGzBTD6d_hb1OQjUAGLiLr--aKo38HvA" type="text/javascript")
+
+  %body
+
+    %section#channels
+
+      %section#calendar
+        %pre= calendar @channel, @date
+
+      %ul
+        %li(class="#{"current" unless @channel}")
+          %a(href="/") Console
+
+        - @channels.each do |channel|
+          %li(class="#{"current" if channel[1..-1] == @channel}")
+            %a(href="/#{channel[1..-1]}/#{@date || "today"}")= channel
+
+    = yield
+
+    = erb :analytics, :layout => false

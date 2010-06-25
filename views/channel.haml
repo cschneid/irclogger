@@ -1,0 +1,15 @@
+%section#log
+  - @messages.each do |message|
+    - log_entry(message) do
+      %a(href="##{message.timestamp}" name="#{message.timestamp}")= Time.at(message.timestamp).strftime("%H:%M")
+
+      - if message.msg?
+        %span.nickname
+          = h "<#{message.nick}>"
+
+        = auto_link_urls(h message.line)
+
+      - else
+        = status_line message.line
+
+      %br
