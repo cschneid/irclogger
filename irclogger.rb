@@ -27,9 +27,16 @@ class Message < Sequel::Model(:irclog)
   def info?
     ! msg?
   end
-end
 
-class NilClass; def empty?; true; end; end
+  def self.find_by_channel_and_date(channel, date)
+    day_after = date + 1
+
+    filter(:timestamp > Time.local(date.year, date.month, date.day).to_i).
+      filter(:timestamp < Time.local(day_after.year, day_after.month, day_after.day).to_i).
+      filter(:channel => "##{channel}").
+      order(:timestamp)
+  end
+end
 
 
 ## Helpers ###########################
@@ -57,6 +64,19 @@ helpers do
     prev_date = date >> -1
 
     %Q{<a href="/#{channel}/#{prev_date}">&lt;</a>#{date.strftime("%B %Y").center(18)}<a href="/#{channel}/#{next_date}">&gt;</a>\n#{cal.split("\n")[1..-1].join("\n")}}
+  end
+
+  def plain_entry(message)
+    buffer = [Time.at(message.timestamp).strftime("%H:%M")]
+
+    if message.msg?
+      buffer << "<#{message.nick}>"
+      buffer << message.line
+    else
+      buffer << status_line(message.line)
+    end
+
+    buffer.join(" ")
   end
 end
 
@@ -88,26 +108,33 @@ get '/:channel/' do
 end
 
 get '/:channel/:date' do
-  @date = params[:date].empty? ? Date.today : Date.parse(params[:date])
-
+  @date = Date.parse(params[:date])
   @channel = params[:channel]
 
-  @day_before = (@date - 1)
-  @day_after = (@date + 1)
+  @messages = Message.find_by_channel_and_date(@channel, @date)
 
-  @begin = Time.local(@date.year, @date.month, @date.day)
-  @end   = Time.local(@day_after.year, @day_after.month, @day_after.day)
-  @messages = Message.filter(:timestamp > @begin.to_i).
-                      filter(:timestamp < @end.to_i).
-                      filter(:channel => "##{@channel}").
-                      order(:timestamp)
+  if request.html?
+    haml :channel
+  else
+    response["Content-Type"] = "text/plain"
 
-  haml :channel
+    @messages.map do |message|
+      plain_entry(message)
+    end.join("\n")
+  end
 end
 
 ## Monkey Patching #############
 class Fixnum
   def minutes
     self * 60
+  end
+end
+
+class NilClass; def empty?; true; end; end
+
+class Rack::Request
+  def html?
+    accept.any? { |content_type| content_type =~ /html/ }
   end
 end
