@@ -1,0 +1,103 @@
+!header_height = 0
+!channels_width = 165px
+
+body
+  background-color: #000
+  font-family: "Menlo", "Monaco", monospace
+  font-size: 12px
+  line-height: 16px
+  color: #fff
+  margin: 0
+  padding: 0
+
+section, header, pre
+  display: block
+  margin: 0
+
+pre
+  font-family: "Menlo", "Monaco", monospace
+
+a
+  color: #fff
+
+#channels
+  position: fixed
+  width = !channels_width
+  top = !header_height
+  height: 100%
+  border-right: 1px solid #444
+
+  ul
+    list-style-type: none
+    margin: 0
+    padding: 10px
+    border-top: 1px solid #444
+
+    a
+      color: #777
+      text-decoration: none
+
+    li.current
+      a
+        color: #fff
+
+  #calendar
+    color: #555
+    padding: 10px
+
+    a
+      text-decoration: none
+      color: #555
+
+      &.current
+        color: #fff
+
+#log
+  padding: 10px
+  margin: #{!header_height} 0 0 #{!channels_width + 1px}
+  color: #444
+
+  div
+    &.highlight
+      color: #fff
+
+      span.nickname
+        color: #FB1263
+
+  a[name]
+    color: #444
+    text-decoration: none
+
+    &:hover
+      text-decoration: underline
+
+  a
+    color: #f6f840
+
+body:not(.highlight)
+  .msg
+    color: #fff
+
+  span.nickname
+    color: #FB1263
+
+header
+  background-color: #000
+  height = !header_height
+  line-height = !header_height
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  text-align: center
+  border-bottom: 1px solid #444
+
+  a
+    text-decoration: none
+    color: #555
+
+  span
+    position: absolute
+    left: 10px
+    top: 0
+    font-size: 18px
