@@ -57,14 +57,16 @@ class Irclogger < Sinatra::Base
       text.sub(/#.*$/, "")
     end
   
-    def calendar(channel, date)
+    def calendar(channel, date, links=true)
       cal = `cal #{date.month} #{date.year}`
   
-      cal.gsub!(/\b(\d{1,2})\b/) do
-        d = date.strftime("%Y-%m-#{$1.rjust 2, "0"}")
-        current = "current" if date.to_s == d
+      if links
+        cal.gsub!(/\b(\d{1,2})\b/) do
+          d = date.strftime("%Y-%m-#{$1.rjust 2, "0"}")
+          current = "current" if date.to_s == d
   
-        %Q{<a class="#{current}" href="/#{channel}/#{d}">#{$1}</a>}
+          %Q{<a class="#{current}" href="/#{channel}/#{d}">#{$1}</a>}
+        end
       end
   
       next_date = date >> 1
@@ -97,6 +99,7 @@ class Irclogger < Sinatra::Base
   
   get '/' do
     @date = Date.today
+    @link_calendar = false
     haml :index
   end
   
@@ -117,6 +120,7 @@ class Irclogger < Sinatra::Base
   get '/:channel/:date' do
     @date = Date.parse(params[:date])
     @channel = params[:channel]
+    @link_calendar = true
   
     @messages = Message.find_by_channel_and_date(@channel, @date)
   
