@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta name="description" content="IRC logs by ilbot" />
+    <link rel="stylesheet" type="text/css" href="<TMPL_VAR NAME=BASE_URL>style.css" title="Irclog default Stylesheet" />
+    <link rel="shortcut icon" href="<TMPL_VAR NAME=BASE_URL>moose1.ico" type="image/x-icon" />
+    <title>IRC logs</title>
+</head>
+<body>
+    <h1>IRC logs</h1>
+
+	<TMPL_INCLUDE NAME=linkblock.tmpl>
+
+	<h2 id="<TMPL_VAR NAME=CHANNEL>">#<TMPL_VAR NAME=CHANNEL></h2>
+	<p><strong><a href="<TMPL_VAR NAME=BASE_URL><TMPL_VAR NAME=CHANNEL>/today">Today</a></strong></p>
+
+	<TMPL_VAR NAME=CALENDAR>
+
+    <TMPL_INCLUDE NAME="footer.tmpl">
+  </body>
+</html>

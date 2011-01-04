@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/pugs/!svn/ver/21295/misc/irclog/cgi/template
+END
+search.tmpl
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/pugs/!svn/ver/18539/misc/irclog/cgi/template/search.tmpl
+END
+index.tmpl
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/pugs/!svn/ver/18738/misc/irclog/cgi/template/index.tmpl
+END
+line.tmpl
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/pugs/!svn/ver/21295/misc/irclog/cgi/template/line.tmpl
+END
+linkblock.tmpl
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/pugs/!svn/ver/19691/misc/irclog/cgi/template/linkblock.tmpl
+END
+channel-index.tmpl
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/pugs/!svn/ver/18614/misc/irclog/cgi/template/channel-index.tmpl
+END
+day.tmpl
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/pugs/!svn/ver/18608/misc/irclog/cgi/template/day.tmpl
+END
+footer.tmpl
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/pugs/!svn/ver/18539/misc/irclog/cgi/template/footer.tmpl
+END
+spam.tmpl
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/pugs/!svn/ver/18539/misc/irclog/cgi/template/spam.tmpl
+END

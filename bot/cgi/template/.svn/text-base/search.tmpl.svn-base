@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta name="description" content="IRC LOG for channel <TMPL_VAR NAME=CHANNEL>" />
+    <link rel="stylesheet" type="text/css" href="<TMPL_VAR NAME=BASE_URL>style.css" title="Purple Haze Stylesheet" />
+    <link rel="shortcut icon" href="<TMPL_VAR NAME=BASE_URL>moose1.ico" type="image/x-icon" />
+    <title>IRC logs - Search</title>
+</head>
+<body>
+    <h1>Search in IRC logs</h1>
+
+    <p><a href="<TMPL_VAR NAME=BASE_URL>">Index</a></p>
+
+    <form action="<TMPL_VAR NAME=BASE_URL>search.pl" method="get"
+    accept-charset="utf-8">
+        <label for="channel">Channel</label>
+        <select id="channel" name="channel" size="<TMPL_VAR NAME=CH_COUNT>">
+                <TMPL_LOOP NAME=CHANNELS>
+                <option <TMPL_IF NAME=SELECTED>selected="selected"</TMPL_IF>><TMPL_VAR
+                NAME=CHANNEL></option>
+                </TMPL_LOOP>
+        </select>
+		<br />
+
+        <label for="nick">Nick</label>
+		<input type="text" size="10" maxlength="30" name="nick"
+		value="<TMPL_VAR NAME=NICK>" id="nick"></input>
+		<br />
+
+        <label for="q">Text</label>
+		<input type="text" size="10" maxlength="30" name="q"
+		value="<TMPL_VAR NAME=Q>" id="text"></input>
+		<br />
+
+		<input type="submit"></input><br />
+
+    </form>
+
+	<TMPL_IF NAME=DAYS>
+	<h1>Results</h1>
+	<p>Results from days <TMPL_VAR NAME=DAYS_LOWER> to <TMPL_VAR
+	NAME=DAYS_UPPER>, from overall <TMPL_VAR NAME=DAYS_COUNT> days</p>
+
+	<p>
+	Result pages:
+	<TMPL_LOOP NAME=RESULT_PAGES>
+		<a href="<TMPL_VAR NAME=BASE_URL>search.pl?nick=<TMPL_VAR
+		NAME=NICK ESCAPE=URL>;channel=<TMPL_VAR NAME=CURRENT_CHANNEL
+		ESCAPE=URL>;q=<TMPL_VAR NAME=Q>;offset=<TMPL_VAR NAME=OFFSET>"><TMPL_VAR
+		NAME=PAGE></a>
+	</TMPL_LOOP>
+	</p>
+
+	<TMPL_LOOP NAME=DAYS>
+		<h2><a href="<TMPL_VAR NAME=URL>"><TMPL_VAR NAME=DAY></a></h2>
+		<table>
+		<TMPL_LOOP NAME=LINES>
+			<TMPL_INCLUDE NAME='line.tmpl'>
+		</TMPL_LOOP>
+		</table>
+	</TMPL_LOOP>
+	</TMPL_IF>
+
+    <TMPL_INCLUDE NAME="footer.tmpl">
+  </body>
+</html>
