@@ -118,7 +118,12 @@ class Irclogger < Sinatra::Base
   end
   
   get '/:channel/:date' do
-    @date = Date.parse(params[:date])
+    if params[:date] == "today"
+      redirect "/#{params[:channel]}/#{relative_day('today')}"
+    else
+      @date = Date.parse(params[:date])
+    end
+
     @channel = params[:channel]
     @link_calendar = true
   
