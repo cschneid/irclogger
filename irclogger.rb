@@ -37,7 +37,7 @@ class Irclogger < Sinatra::Base
   
     def self.find_by_channel_and_date(channel, date)
       # Channels look like: .sinatra, or ..Paws.  Sub it so it finds in the db right.
-      channel = channel.gsub(".", "#")
+      channel = channel.gsub(/\./, "#")
 
       day_after = date + 1
   
@@ -145,7 +145,7 @@ class Irclogger < Sinatra::Base
   
   get '/:channel/slice/:from/:to' do
     @channel = params[:channel]
-    @channel = @channel.gsub(".", "#")
+    @channel = @channel.gsub(/\./, "#")
     @messages = Message.filter(:timestamp > params[:from]).
                         filter(:timestamp < params[:to]).
                         filter(:channel => "#{@channel}").
@@ -170,7 +170,7 @@ class Irclogger < Sinatra::Base
       arr << row[:channel] if (row[:channel] =~ /^#/ && row[:channel] != "#datamapper http://datamapper.")
       arr
     }.collect do |channel|
-      channel = channel.gsub(".", "#")
+      channel = channel.gsub(/\./, "#")
       {
         :channel => channel,
         :permalink => "http://irclogger.com/#{channel[1..-1]}"
