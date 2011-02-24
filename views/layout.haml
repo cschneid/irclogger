@@ -3,7 +3,7 @@
 %html
   %title
     - if @channel
-      = "#{@channel.gsub(/./, "#")} on #{@date} – "
+      = "#{@channel.gsub(/\.\/, "#")} on #{@date} – "
 
     irclogger – Freenode IRC logs
 
