@@ -3,7 +3,7 @@
 %html
   %title
     - if @channel
-      = "##{@channel} on #{@date} – "
+      = "#{@channel.gsub(/./, "#")} on #{@date} – "
 
     irclogger – Freenode IRC logs
 
@@ -27,8 +27,8 @@
           %a(href="/") Console
 
         - @channels.each do |channel|
-          %li(class="#{"current" if channel[1..-1] == @channel}")
-            %a(href="/#{channel[1..-1]}/#{@date || "today"}")= channel
+          %li(class="#{"current" if channel.gsub(/#/, ".") == @channel}")
+            %a(href="/#{channel.gsub(/#/, '.')}/#{@date || "today"}")= channel
 
     = yield
 
