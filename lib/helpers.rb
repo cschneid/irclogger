@@ -1,9 +1,11 @@
 module IRCLogger
   module Helpers
-    def relative_day(day) 
+    def relative_day(day)
       case day
-      when "today": Date.today.strftime("%Y-%m-%d")
-      when "yesterday": (Date.today - 1).strftime("%Y-%m-%d")
+      when "today"
+        Date.today.strftime("%Y-%m-%d")
+      when "yesterday"
+        (Date.today - 1).strftime("%Y-%m-%d")
       else Date.today.strftime("%Y-%m-%d")
       end
     end

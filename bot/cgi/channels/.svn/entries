@@ -1,0 +1,41 @@
+8
+
+dir
+21443
+http://svn.pugscode.org/pugs/misc/irclog/cgi/channels
+http://svn.pugscode.org/pugs
+
+
+
+2007-10-24T05:38:29.203094Z
+18623
+moritz
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+c213334d-75ef-0310-aa23-eaa082d1ae64
+
+perl6.tmpl
+file
+
+
+
+
+2008-07-23T02:37:56.000000Z
+98d4c88a48e47787b3aaa02fda01a8f3
+2007-10-24T05:38:29.203094Z
+18623
+moritz
+has-props
+

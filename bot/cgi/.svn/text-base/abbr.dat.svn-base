@@ -1,0 +1,174 @@
+YAPC        --- Yet Another Perl Conference
+PCR         --- Pugs::Compiler::Rule
+PGE         --- Parser Grammar Engine
+PIR         --- Parrot Intermediate Representation
+TPF         --- The Perl Foundation
+SVN         --- Subversion
+CPAN        --- Comprehensive Perl Archive Network
+VM          --- Virtual Machine
+PCRE        --- Perl-Compatible Regular Expressions
+REPL        --- Read-Eval-Print Loop
+MOP         --- Meta-Object Protocol
+OO          --- Object-Oriented
+OOP         --- Object-Oriented Programming
+ASM         --- Assembler
+SML         --- Standard ML
+(?i:KP6)    --- KindaPerl6                                  --- KP6
+(?i:MP6)    --- MiniPerl6                                   --- MP6
+HTML        --- Hypertext Markup Language
+XHTML       --- Extensible Hypertext Markup Language
+RAM         --- Random Access Memory
+AST         --- Abstract Syntax Tree
+MIME        --- Multipurpose Internet Mail Extensions
+CGI         --- Common Gateway Interface
+HTTP        --- Hypertext Transfer Protocol
+LWP         --- libwww-perl
+XML         --- Extensible Markup Language
+FTP         --- File Transfer Protocol
+URL         --- Uniform Resource Locator
+URI         --- Uniform Resource Identifier
+PAST        --- Parrot Abstract Syntax Tree
+TGE         --- Tree Grammar Engine
+p5p         --- Perl 5 Porters Mailing List
+IRC         --- Internet Relay Chat
+(?i:CSS)    --- Cascading Stylesheets                        --- CSS
+(?i:SQL)    --- Structured Query Language                    --- SQL
+p5p         --- perl5-porters
+(?i:PBP)    --- Perl Best Practices                          --- PBP
+(?i:P6)     --- Perl 6                                       --- P6
+(?i:P5)     --- Perl 5                                       --- P5
+RFC         --- Request For Comments
+UTF         --- Unicode Transformation Format
+UCS         --- Universal Character Set
+ISO         --- International Organization for Standardization
+UTC         --- Coordinated Universal Timecode
+TAP         --- Test Anything Protocol
+RSS         --- Rich Site Summary
+GHC         --- Glasgow Haskell Compiler                     --- GHC
+RDBMS       --- Relational Database Management System
+DBMS        --- Database Management System
+API         --- Application Programming Interface
+(?i:win32)  --- Windows (32-bit)                             --- Win32
+STM         --- Software Transactional Memory
+(?i:IO)     --- Input/Output                                 --- IO
+(?i:I/O)    --- Input/Output                                 --- I/O
+POD         --- Plain Old Documentation
+TDD         --- Test-Driven Development
+YAML        --- YAML Ain't Markup Language
+JIT         --- Just-In-Time
+CPU         --- Central Processing Unit
+TCP         --- Transmission Control Protocol
+IP          --- Internet Protocol
+(?i:JAPH)   --- Just Another Perl Hacker                     --- JAPH
+APL         --- A Programming Language
+OS          --- Operating Systems
+FBSD        --- FreeBSD
+(?i:RGB)    --- Red, Green, Blue                             --- RGB
+JPEG        --- Joint Photographic Experts Group
+MPEG        --- Moving Picture Experts Group
+JPG         --- Joint Photographic Experts Group
+MPG         --- Moving Picture Experts Group
+GB          --- Gigabyte
+MB          --- Megabyte
+KB          --- Kilobyte
+(?i:P2P)    --- Peer-To-Peer                                 --- P2P
+MS          --- Microsoft
+DB          --- Database
+TBD         --- To Be Done
+HLL         --- High-Level Language
+PAUSE       --- Perl Authors Upload Server
+DNS         --- Domain Name Server
+(?i:poco-irc) --- POE::Component::IRC                       --- PoCo-IRC
+(?i:pocoirc)  --- POE::Component::IRC                       --- PoCoIRC
+CMS         --- Content Management System
+WML         --- Wireless Markup Language
+SWIG        --- Simplified Wrapper and Interface Generator
+QDOS        --- Quick and Dirty Operating System
+QDRDBMS     --- Quick and Dirty Relational Database Management System
+CLOS        --- Common Lisp Object System
+ORM         --- Object-Relational Mapping
+PMC         --- Parrot Magic Cookie
+FFI         --- Foreign Function Interface
+PDD         --- Parrot Design Document
+(?i:DWIM)   --- Do What I Mean                              --- DWIM
+(?i:pugs)   --- Perl 6 User's Golfing System                --- pugs
+GPL         --- GNU General Public License
+LGPL        --- GNU Lesser General Public License
+JSP         --- JavaServer Pages
+FQDN        --- Fully Qualified Domain Name
+IPv6        --- Internet Protocol version 6
+IPv4        --- Internet Protocol version 4
+DSL         --- Domain-Specific Language
+SSH         --- Secure Shell
+NCI         --- Native Call Interface
+CRLF        --- Carriage Return/Line Feed
+FLOSS       --- Free/Libre/Open-Source Software
+FOSS        --- Free/Open-Source Software
+(?i:OSCON)  --- O'Reilly Open Source Convention             --- OSCON
+(?i:DBC)    --- Design By Contract                          --- DBC
+JVM         --- Java Virtual Machine
+PDP         --- Personal Data Processor
+ASCII       --- American Standard Code for Information Interchange
+GC          --- Garbage Collection/Collector
+TCC         --- Tiny C Compiler
+IE          --- Internet Explorer
+VCS         --- Version Control System
+SCM         --- Software Configuration Management
+JSON        --- JavaScript Object Notation
+DLR         --- Dynamic Language Runtime
+GPG         --- GNU Privacy Guard
+PGP         --- Pretty Good Privacy
+GUI         --- Graphical User Interface
+OFTC        --- Open and Free Technology Community
+PIL         --- Pugs Intermediate Language
+JS          --- JavaScript
+yacc        --- Yet Another Compiler Compiler
+SIP         --- Session Initiation Protocol
+VoIP        --- Voice over Internet Protocol
+LAMP        --- Linux, Apache, MySQL & Perl
+SBCL        --- Steel Bank Common Lisp
+EU::MM      --- ExtUtils::MakeMaker
+M::B        --- Module::Build
+M::I        --- Module::Install
+LLVM        --- Low Level Virtual Machine
+RHEL        --- Red Hat Enterprise Linux
+PHP         --- Pansies Hate Perl
+PAM         --- Pluggable Authentication Modules
+OCR         --- Optical Character Recognition
+HoH         --- Hash of Hashes
+OLED        --- Organic Light Emitting Diode
+TT          --- Template Toolkit
+CL          --- Common Lisp
+PPI         --- Perl Parsing Interface
+RC          --- Release Candidate
+HTTPS       --- Secure Hypertext Transfer Protocol
+PASM        --- Parrot assembly language
+GMP         --- GNU Multi-Precision Library
+ABNF        --- Augmented Backus-Naur Form
+BNF         --- Backus-Naur Form
+IDE         --- Integrated Development Environment
+SAX         --- Simple API for XML
+StAX        --- Streaming API for XML
+DOM         --- Document Object Model
+SVG         --- Scalable Vector Graphics
+XSL         --- Extensible Stylesheet Language
+CVS         --- Concurrent Versions System
+UML         --- Unified Modelling Language
+NYI         --- Not Yet Implemented
+LHS         --- Left Hand Side
+RHS         --- Right Hand Side
+TZ          --- Timezone
+SDL         --- Simple DirectMedia Layer
+MMD         --- Multimethod Dispatch
+HPC         --- Haskell Program Coverage
+AJAX        --- Asynchronous JavaScript and XML
+CLI         --- Command Line Interface
+TLD         --- Top-Level Domain
+PCI         --- Peripheral Component Interconnect
+USB         --- Universal Serial Bus
+RAID        --- Redundant Array of Independent Disks
+XSL         --- Extensible Stylesheet Language
+XSLT        --- Extensible Stylesheet Language Transformations
+CPS         --- Continuation Passing Style
+PCT         --- Parrot Compiler Toolkit
+red_STD     --- Ruby version of STD

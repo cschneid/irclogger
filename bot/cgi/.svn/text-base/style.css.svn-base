@@ -1,0 +1,123 @@
+body {
+	background-color: white;
+	color: black;
+}
+
+h1, h2, h3,  #footer * { 
+    color: #70709f; 
+    clear: left;
+}
+
+
+#footer {
+	background-color: #ececef; 
+	border-color: #c0c0ff;
+	color: inherit;
+	border-top: 2px solid;
+	border-bottom: 2px solid;
+	margin-bottom: 0.2em;
+	padding-top: 0.75ex;
+	padding-bottom: 0.75ex;
+	min-height: 4.7ex;
+	clear: left;
+}
+
+#footer * {
+  background-color: inherit;
+  font-size: 92%;
+}
+
+tr, td {
+	vertical-align: top;
+}
+
+.dark {
+	background-color: #efefef;
+}
+
+.special {
+	font-size: 80%;
+}
+.special * {
+	color: gray;
+}
+
+#log {
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid #efefef;
+}
+
+#log tr { border-top: 1px solid #efefef; }
+#log tr.head, #log tr.dark.new { border-top-style: none; }
+#log tr.dark { border-top: 1px solid #dfdfdf; }
+
+#log td, th {
+	font-family: Consolas, "Lucida Console", "Courier New", monospace;
+    padding: 0.2em 0.4em;
+}
+
+#log th { border-bottom: 1px solid #C0C0C0; }
+
+#log .nick {
+    text-align: right;
+    border-right: 1px solid #C0C0C0;
+}
+
+#log .time { border-left:  1px solid #efefef; }
+#log .msg  { border-right: 1px solid #efefef; line-height: 1.3em; }
+#log .act  { font-style: italic; }
+
+.log-index li {
+    display: inline;
+}
+
+label,input {
+	display: block;
+	width: 10em;
+	float: left;
+	margin-bottom: 2ex;
+}
+
+label {
+	text-align: right;
+	width: 8em;
+	padding-right: 2ex;
+}
+
+br {
+	clear: left;
+}
+
+/* index page */
+
+.calendar {
+    float: left;
+}
+
+/* most important channel members. This is subjective, if you have a different
+ * opinion, feel free to change */
+.nick_timtoady 	{ color: green; font-weight: bold; }
+.nick_audreyt 	{ color: red;  font-weight: bold;}
+
+
+/* all "active" bots, (svnbot6, lambdabot, specbot etc.) */
+.bots  {color: #FFA500; font-style: italic}
+
+/* The rest gets dynamically allocated colors */
+.nick1 { color: #00AA33; }
+.nick2 { color: #AA0000; }
+.nick3 { color: #005500; }
+.nick4 { color: #FF0077; }
+.nick5 { color: blue; }
+.nick6 { color: #8B008B; }
+.nick7 { color: #50507f; }
+.nick8 { color: #00008B; }
+.nick9 { color: #222222; }
+
+abbr { cursor: help; }
+
+.search_found {
+	font-weight: bold;
+}
+
